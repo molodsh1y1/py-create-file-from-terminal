@@ -38,7 +38,7 @@ def create_file(
             idx += 1
 
 
-def create_directory(args: dict[str, list[str]]) -> str:
+def create_directory(args: dict[str, str | list[str]]) -> str:
     directory_path = os.getcwd()
 
     for arg in args.get("directories"):
@@ -51,7 +51,7 @@ def create_directory(args: dict[str, list[str]]) -> str:
     return directory_path
 
 
-def create_file_inside_directory(args: dict[str, list[str]]) -> None:
+def create_file_inside_directory(args: dict[str, str | list[str]]) -> None:
     directory_path = create_directory(args)
     create_file(args, directory_path)
 
@@ -64,6 +64,6 @@ if __name__ == "__main__":
     elif "directories" in arguments:
         create_directory(arguments)
     elif "file" in arguments:
-        create_directory(arguments)
+        create_file(arguments)
     else:
         print("No arguments were presented")
